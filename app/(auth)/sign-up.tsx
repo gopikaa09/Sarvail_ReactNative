@@ -43,11 +43,11 @@ const SignUp = () => {
     <SafeAreaView className='bg-primary h-full' >
       <ScrollView>
         <View className='w-full justify-center min-h-[85vh] px-4 my-6 '>
-          <Image source={images.logo}
+          {/* <Image source={images.sarvailLogo}
             resizeMode='contain'
-            className='w-[115px] h-[35px] mb-5'
-          />
-          <Text className='text-white text-2xl'>Sign up to Aora</Text>
+            className='w-[115px] h-[115px] mb-5'
+          /> */}
+          <Text className='text-white text-2xl'>Sign up to Sarvail</Text>
           <FormField
             title="Username"
             value={form.username}

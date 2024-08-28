@@ -21,7 +21,7 @@ const TabLayout = () => {
       <Tabs
         screenOptions={{
           tabBarShowLabel: false,
-          tabBarActiveTintColor: '#e6398a',
+          tabBarActiveTintColor: '#FF9C01',
           tabBarInactiveTintColor: '#565756',
           tabBarStyle: {
             backgroundColor: '#161622',
@@ -46,9 +46,26 @@ const TabLayout = () => {
             />
           )
         }} />
+        <Tabs.Screen name='peoples' options={{
+          title: "Peoples",
+          headerShown: false,
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcon
+              icon={icons.peoples}
+              color={color}
+              name="Peoples"
+              focused={focused}
+            />
+          )
+        }} />
         <Tabs.Screen name='profile' options={{
           title: "Profile",
           headerShown: false,
+          // headerStyle: {
+          //   backgroundColor: '#161622',
+          //   // Set header background color
+          // },
+          // headerTintColor: '#FFFFFF',
           tabBarIcon: ({ color, focused }) => (
             <TabIcon
               icon={icons.profile}
@@ -58,8 +75,6 @@ const TabLayout = () => {
             />
           )
         }} />
-
-
       </Tabs>
     </>
   )

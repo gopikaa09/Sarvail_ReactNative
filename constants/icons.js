@@ -13,6 +13,8 @@ import eye from "../assets/icons/eye.png";
 import play from "../assets/icons/play.png";
 import liked from "../assets/icons/liked.png";
 import unliked from "../assets/icons/unliked.png";
+import peoples from "../assets/icons/peoples.png";
+import edit from "../assets/icons/edit.png";
 
 export default {
   play,
@@ -30,4 +32,6 @@ export default {
   eye,
   liked,
   unliked,
+  peoples,
+  edit,
 };

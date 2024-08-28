@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ActivityIndicator, FlatList } from 'react-native';
+import { View, Text, ActivityIndicator, FlatList, Keyboard } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ImageCard from '@/components/ImageCard';
+import SearchInput from '@/components/SearchInput';
 
 const Home = () => {
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,6 +20,7 @@ const Home = () => {
         }
         const json = await response.json();
         setData(json);
+        setFilteredData(json);
       } catch (error) {
         setError(error);
       } finally {
@@ -26,6 +30,17 @@ const Home = () => {
 
     fetchData();
   }, []);
+
+  const handleSearch = () => {
+    if (query) {
+      const filtered = data.filter((item) =>
+        item.post_title.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredData(filtered);
+    } else {
+      setFilteredData(data);
+    }
+  };
 
   return (
     <SafeAreaView className="flex-1 bg-primary">
@@ -39,7 +54,7 @@ const Home = () => {
         </View>
       ) : (
         <FlatList
-          data={data}
+          data={filteredData}
           keyExtractor={(item) => item.ID.toString()}
           renderItem={({ item }) => <ImageCard item={item} />}
           ListHeaderComponent={() => (
